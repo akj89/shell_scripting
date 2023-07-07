@@ -7,8 +7,8 @@ echo "$a"
 action=$1
 case $action in
   a) echo -e "/e[32m Testing green/e[0m";;
-  b) echo  -e "/e[31m Testing red/e[0m" ;;
-  *) echo  -e "/e[33m Testing yellow/e[0m" ;;
+  b) echo  -e "\e[31m Testing red/e[0m" ;;
+  *) echo  -e "\e[33m Testing yellow\e[0m" ;;
 
 esac
 
