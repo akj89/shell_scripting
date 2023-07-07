@@ -14,17 +14,17 @@ esac
 
 
 
-bgColorCode = 1
+code = 1
 for color in red green blue yellow Magenta Cyan; do
     case $color in
-      red) bgColorCode = 41 ;;
-      green) bgColorCode = 42 ;;
-      yellow) bgColorCode = 43 ;;
-      blue) bgColorCode = 44 ;;
-      Magenta) bgColorCode = 45 ;;
-      Cyan) bgColorCode = 46 ;;
+      red) $code = 41 ;;
+      green) code = 42 ;;
+      yellow) code = 43 ;;
+      blue) code = 44 ;;
+      Magenta) code = 45 ;;
+      Cyan) code = 46 ;;
     esac
-    echo -e "\e[$bgColorCodem Check BG color is $color\e[0m"
+    echo -e "\e[$codem Check BG color is $color\e[0m"
 done
 
 exit 0
