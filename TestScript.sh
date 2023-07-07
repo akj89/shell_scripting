@@ -27,4 +27,12 @@ for color in red green blue yellow Magenta Cyan; do
     echo -e "$code Check BG color is $color\e[0m"
 done
 
+echo $0
+echo $1
+echo $2
+echo $$
+echo $*
+echo $#
+echo $?
+
 exit 0
