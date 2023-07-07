@@ -14,7 +14,7 @@ esac
 
 
 
-code = 1
+code=1
 for color in red green blue yellow Magenta Cyan; do
     case $color in
       red) code = $((41)) ;;
