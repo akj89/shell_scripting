@@ -12,7 +12,7 @@ case $action in
 
 esac
 
-exit 0
+
 
 bgColorCode = 1
 for color in red,green,blue,yellow,Magenta,Cyan ; do
@@ -26,3 +26,5 @@ for color in red,green,blue,yellow,Magenta,Cyan ; do
     esac
     echo -e "\e[$bgColorCodem Check BG color is $color\e[0m"
 done
+
+exit 0
