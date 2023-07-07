@@ -17,14 +17,14 @@ esac
 code=1
 for color in red green blue yellow Magenta Cyan; do
     case $color in
-      red) code=$((41)) ;;
-      green) code=$((42)) ;;
-      yellow) code=$((43)) ;;
-      blue) code=$((44)) ;;
-      Magenta) code=$((45)) ;;
-      Cyan) code=$((46)) ;;
+      red) code=$((\e[41m)) ;;
+      green) code=$((\e[42m)) ;;
+      yellow) code=$((\e[43m)) ;;
+      blue) code=$((\e[44m)) ;;
+      Magenta) code=$((\e[45m)) ;;
+      Cyan) code=$((\e[46m)) ;;
     esac
-    echo -e "\e[42m Check BG color is $color\e[0m"
+    echo -e "$code Check BG color is $color\e[0m"
 done
 
 exit 0
