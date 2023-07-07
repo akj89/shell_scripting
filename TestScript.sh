@@ -15,7 +15,7 @@ esac
 
 
 bgColorCode = 1
-for color in red,green,blue,yellow,Magenta,Cyan ; do
+for color in red green blue yellow Magenta Cyan; do
     case $color in
       red) bgColorCode = 41 ;;
       green) bgColorCode = 42 ;;
