@@ -17,7 +17,7 @@ esac
 code=1
 for color in red green blue yellow Magenta Cyan; do
     case $color in
-      red) code=$(("\e[41m")) ;;
+      red) code="\e[41m" ;;
       green) code=$((\e[42m)) ;;
       yellow) code=$((\e[43m)) ;;
       blue) code=$((\e[44m)) ;;
