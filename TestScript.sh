@@ -24,7 +24,7 @@ for color in red green blue yellow Magenta Cyan; do
       Magenta) code=$((45)) ;;
       Cyan) code=$((46)) ;;
     esac
-    echo -e "\e[$code m Check BG color is $color\e[0m"
+    echo -e "\e[$codem Check BG color is $color\e[0m"
 done
 
 exit 0
