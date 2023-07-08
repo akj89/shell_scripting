@@ -4,7 +4,7 @@ set -e
 COMPONENT=frontend
 LOGFILE=/tmp/$COMPONENT.log
 
-source ./common.sh
+source components/common.sh
 
 echo -n "Installing nginx: "
 yum install nginx -y &>> $LOGFILE
