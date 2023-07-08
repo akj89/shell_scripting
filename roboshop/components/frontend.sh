@@ -18,7 +18,7 @@ cd /usr/share/nginx/html
 rm -rf *
 
 echo -n "Unzipping the $COMPONENT contents: "
-unzip /tmp/$COMPONENT.zip &>> $LOGFILE
+unzip -o /tmp/$COMPONENT.zip &>> $LOGFILE
 stat $?
 
 mv $COMPONENT-main/* .

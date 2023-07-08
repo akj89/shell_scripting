@@ -20,7 +20,7 @@ stat $?
 
 echo -n "Unzipping $COMPONENT schema:"
 cd /tmp
-unzip $COMPONENT.zip &>> $LOGFILE
+unzip -o $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
 mongo < catalogue.js
 mongo < users.js
