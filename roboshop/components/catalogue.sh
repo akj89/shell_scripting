@@ -32,7 +32,7 @@ unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 
 echo -n "Installing the $COMPONENT dependencies:"
-mv $COMPONENT-main $COMPONENT
+mv -f $COMPONENT-main $COMPONENT
 cd /home/$APPUSER/$COMPONENT
 npm install &>> $LOGFILE
 stat $?
@@ -42,7 +42,7 @@ sed -i -e 's/MONGO_DNSNAME/172.31.89.38/' /home/$APPUSER/$COMPONENT/systemd.serv
 stat $?
 
 
-mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+mv -f /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 
 echo -n "Starting $COMPONENT service:"
 systemctl daemon-reload &>> $LOGFILE
