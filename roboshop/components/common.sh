@@ -1,7 +1,7 @@
 #!/bin/bash
 USERID=$(id -u)
 
-if[ $USERID -ne 0 ]; then
+if[ $USERID -ne 0 ] ; then
     echo -e "\e[31m Please run the script with root user or sudo access \e[0m]"
 fi
 
