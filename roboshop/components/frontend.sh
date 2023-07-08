@@ -4,7 +4,7 @@ set -e
 COMPONENT=frontend
 LOGFILE=/tmp/$COMPONENT.log
 
-source shell_scripting/roboshop/components/common.sh
+. shell_scripting/roboshop/components/common.sh
 
 echo -n "Installing nginx: "
 yum install nginx -y &>> $LOGFILE
