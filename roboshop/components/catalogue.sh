@@ -25,24 +25,24 @@ if [ $? -ne 0 ]; then
 fi
 
 echo -n "Downloading the $COMPONENT:"
-$ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
+curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
 stat $?
 
 echo -n "Unzipping the $COMPONENT:"
-$ cd /home/roboshop
-$ unzip /tmp/$COMPONENT.zip  &>> $LOGFILE
+cd /home/roboshop
+unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 
 echo -n "Installing the $COMPONENT dependencies:"
-$ mv $COMPONENT-main $COMPONENT
-$ cd /home/roboshop/$COMPONENT
-$ npm install
+mv $COMPONENT-main $COMPONENT
+cd /home/roboshop/$COMPONENT
+npm install &>> $LOGFILE
 stat $?
 
-$ vim systemd.servce
-mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
-systemctl daemon-reload
-systemctl start catalogue
-systemctl enable catalogue
-systemctl status catalogue -l
+#$ vim systemd.servce
+#mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+#systemctl daemon-reload
+#systemctl start catalogue
+#systemctl enable catalogue
+#systemctl status catalogue -l
 
