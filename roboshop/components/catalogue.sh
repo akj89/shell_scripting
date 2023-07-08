@@ -37,10 +37,16 @@ cd /home/$APPUSER/$COMPONENT
 npm install &>> $LOGFILE
 stat $?
 
-#$ vim systemd.servce
-#mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
-#systemctl daemon-reload
-#systemctl start $COMPONENT
-#systemctl enable $COMPONENT
-#systemctl status $COMPONENT -l
+echo -n "Configuring $COMPONENT file:"
+sed -i -e 's/MONGO_DNSNAME/172.31.89.38/' /home/$APPUSER/$COMPONENT/systemd.service
+stat $?
+
+
+mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
+
+echo -n "Starting $COMPONENT service:"
+systemctl daemon-reload
+systemctl start $COMPONENT
+systemctl enable $COMPONENT
+stat $?
 
