@@ -29,12 +29,15 @@ stat $?
 echo -n "Unzipping the $COMPONENT:"
 rm -rf /home/$APPUSER/$COMPONENT
 cd /home/$APPUSER
-unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
+unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE && mv -f $COMPONENT-main $COMPONENT &>> $LOGFILE
+stat $?
+
+cd /home/$APPUSER/$COMPONENT
+echo -n "Changing permissions to $APPUSER"
+chown -R $APPUSER:$APPUSER /home/roboshop/$COMPONENT &&  chmod -R 775 /home/roboshop/$COMPONENT 
 stat $?
 
 echo -n "Installing the $COMPONENT dependencies:"
-mv -f $COMPONENT-main $COMPONENT
-cd /home/$APPUSER/$COMPONENT
 npm install &>> $LOGFILE
 stat $?
 
