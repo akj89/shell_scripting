@@ -9,7 +9,7 @@ source components/common.sh
 
 
 echo -n "Downloading nodejs repository:"
-curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -
+curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -  &>> $LOGFILE
 stat $?
 
 echo -n "Installing nodejs:"
