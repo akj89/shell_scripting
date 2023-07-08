@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 COMPONENT=catalogue
 LOGFILE=/tmp/$COMPONENT.log
