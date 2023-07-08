@@ -14,6 +14,10 @@ echo -n "Installing $COMPONENT component:"
 yum install -y $COMPONENT-org &>> $LOGFILE
 stat $?
 
+echo -n "Updating the $COMPONENT config file:"
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+stat $?
+
 echo -n "Downloading $COMPONENT schema:"
 curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPONENT/archive/main.zip" &>> $LOGFILE
 stat $?
@@ -24,10 +28,6 @@ unzip -o $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
 mongo < catalogue.js
 mongo < users.js
-
-echo -n "Updating the $COMPONENT config file:"
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
-stat $?
 
 
 echo -n "Starting $COMPONENT service:"
