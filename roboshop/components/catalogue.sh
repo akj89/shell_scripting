@@ -27,6 +27,7 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 stat $?
 
 echo -n "Unzipping the $COMPONENT:"
+rm -rf /home/$APPUSER/$COMPONENT
 cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
