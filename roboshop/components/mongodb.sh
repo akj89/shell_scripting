@@ -31,8 +31,12 @@ stat $?
 echo -n "Unzipping $COMPONENT schema:"
 cd /tmp
 unzip -o $COMPONENT.zip &>> $LOGFILE
+stat $?
+
+echo -n "Installing $COMPONENT schema:"
 cd $COMPONENT-main
 mongo < catalogue.js &>> $LOGFILE
 mongo < users.js &>> $LOGFILE
+stat $?
 
 
