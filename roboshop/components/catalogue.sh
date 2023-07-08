@@ -13,9 +13,8 @@ curl --silent --location https://rpm.nodesource.com/setup_16.x | sudo bash -  &>
 stat $?
 
 echo -n "Installing nodejs:"
-yum install nodejs -y
+yum install nodejs -y  &>> $LOGFILE
 stat $?
-
 
 id $APPUSER &>> $LOGFILE
 if [ $? -ne 0 ]; then
@@ -29,20 +28,20 @@ curl -s -L -o /tmp/$COMPONENT.zip "https://github.com/stans-robot-project/$COMPO
 stat $?
 
 echo -n "Unzipping the $COMPONENT:"
-cd /home/roboshop
+cd /home/$APPUSER
 unzip -o /tmp/$COMPONENT.zip  &>> $LOGFILE
 stat $?
 
 echo -n "Installing the $COMPONENT dependencies:"
 mv $COMPONENT-main $COMPONENT
-cd /home/roboshop/$COMPONENT
+cd /home/$APPUSER/$COMPONENT
 npm install &>> $LOGFILE
 stat $?
 
 #$ vim systemd.servce
-#mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+#mv /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
 #systemctl daemon-reload
-#systemctl start catalogue
-#systemctl enable catalogue
-#systemctl status catalogue -l
+#systemctl start $COMPONENT
+#systemctl enable $COMPONENT
+#systemctl status $COMPONENT -l
 
