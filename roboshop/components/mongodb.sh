@@ -32,7 +32,7 @@ echo -n "Unzipping $COMPONENT schema:"
 cd /tmp
 unzip -o $COMPONENT.zip &>> $LOGFILE
 cd $COMPONENT-main
-mongo < catalogue.js
-mongo < users.js
+mongo < catalogue.js &>> $LOGFILE
+mongo < users.js &>> $LOGFILE
 
 
