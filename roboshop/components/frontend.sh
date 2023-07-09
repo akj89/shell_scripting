@@ -34,5 +34,6 @@ done
 
 echo -n "Starting $COMPONENT service: "
 systemctl enable nginx &>> $LOGFILE
-systemctl start nginx &>> $LOGFILE
+systemctl daemon-reload &>> $LOGFILE
+systemctl restart nginx &>> $LOGFILE
 stat $?
