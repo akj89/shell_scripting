@@ -49,4 +49,4 @@ cd /tmp/$COMPONENT-main/
 mysql -uroot -p${MYSQL_PWD} < shipping.sql &>> $LOGFILE
 stat $? 
 
-
+echo -e "\e[32m _______________$COMPONENT Installation completed_____________\e[0m"
