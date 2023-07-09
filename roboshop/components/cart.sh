@@ -42,7 +42,7 @@ npm install &>> $LOGFILE
 stat $?
 
 echo -n "Configuring $COMPONENT file:"
-sed -i -e 's/MONGO_ENDPOINT/mongodb.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
+sed -i -e 's/CATALOGUE_ENDPOINT/catalogue.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
 stat $?
 
 
