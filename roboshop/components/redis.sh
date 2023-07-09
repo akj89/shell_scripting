@@ -15,8 +15,8 @@ yum install $COMPONENT-6.2.11 -y  &>> $LOGFILE
 stat $?
 
 echo -n "Configuring $COMPONENT file:"
-sed -i -e 's/127.0.0.1/0.0.0.0' /etc/$COMPONENT.conf
-sed -i -e 's/127.0.0.1/0.0.0.0' /etc/$COMPONENT/$COMPONENT.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/$COMPONENT.conf
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/$COMPONENT/$COMPONENT.conf
 
 echo -n "Starting $COMPONENT service:"
 systemctl daemon-reload &>> $LOGFILE
