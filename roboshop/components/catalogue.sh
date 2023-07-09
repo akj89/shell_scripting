@@ -42,7 +42,7 @@ npm install &>> $LOGFILE
 stat $?
 
 echo -n "Configuring $COMPONENT file:"
-sed -i -e 's/MONGO_DNSNAME/172.31.89.38/' /home/$APPUSER/$COMPONENT/systemd.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
 stat $?
 
 
