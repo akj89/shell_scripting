@@ -54,3 +54,5 @@ systemctl enable $COMPONENT &>> $LOGFILE
 systemctl restart $COMPONENT &>> $LOGFILE
 stat $?
 
+echo -e "\e[32m _______________$COMPONENT Installation completed_____________\e[0m"
+
