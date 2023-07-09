@@ -1,6 +1,7 @@
 #!/bin/bash 
 
 COMPONENT=mysql
+LOGFILE=/tmp/$COMPONENT.log
 
 source components/common.sh
 
