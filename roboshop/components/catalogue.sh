@@ -34,7 +34,7 @@ stat $?
 
 cd /home/$APPUSER/$COMPONENT
 echo -n "Changing permissions to $APPUSER"
-chown -R $APPUSER:$APPUSER /home/roboshop/$COMPONENT &&  chmod -R 775 /home/roboshop/$COMPONENT 
+chown -R $APPUSER:$APPUSER /home/$APPUSER/$COMPONENT &&  chmod -R 775 /home/$APPUSER/$COMPONENT 
 stat $?
 
 echo -n "Installing the $COMPONENT dependencies:"
