@@ -69,7 +69,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIGURE_SERVICE() {
     echo -n "Configuring $COMPONENT file:"
-    sed -i -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
+    sed -i -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' -e 's/CATALOGUE_ENDPOINT/catalogue.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' -e 's/MONGO_ENDPOINT/mongodb.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
     stat $?
 
     mv -f /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
