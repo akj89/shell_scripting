@@ -2,6 +2,7 @@
 set -e
 
 COMPONENT=redis
+LOGFILE=/tmp/$COMPONENT.log
 
 source components/common.sh
 
