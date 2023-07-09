@@ -26,11 +26,11 @@ mv static/* .
 rm -rf $COMPONENT-main README.md &>> $LOGFILE
 mv localhost.conf /etc/nginx/default.d/roboshop.conf
 
-# for component in catalogue cart user shipping payment; do
-#     echo -n "Configuring Reverse Proxy : "
-#     sed -i -e "/$component/s/localhost/$component.ajrobot.co.uk/"  /etc/nginx/default.d/roboshop.conf 
-#     stat $?
-# done
+for component in catalogue; do
+    echo -n "Configuring Reverse Proxy : "
+    sed -i -e "/$component/s/localhost/$component.ajrobot.co.uk/"  /etc/nginx/default.d/roboshop.conf 
+    stat $?
+done
 
 echo -n "Starting $COMPONENT service: "
 systemctl enable nginx &>> $LOGFILE
