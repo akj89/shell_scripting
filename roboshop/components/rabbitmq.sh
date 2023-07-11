@@ -19,16 +19,16 @@ systemctl start $COMPONENT-server  &>> $LOGFILE
 stat $?
 
 
-$COMPONENTctl list_users | grep $APPUSER &>> $LOGFILE
+rabbitmqctl list_users | grep $APPUSER &>> $LOGFILE
 if [ $? -ne 0 ]; then
     echo -n "Creating application user for $COMPONENT:"
-    $COMPONENTctl add_user $APPUSER $APPUSER123  &>> $LOGFILE
+    rabbitmqctl add_user $APPUSER $APPUSER123  &>> $LOGFILE
     stat $?
 fi
 
 echo -n "Granting permission to user for $COMPONENT:"
-$COMPONENTctl set_user_tags $APPUSER administrator  &>> $LOGFILE
-$COMPONENTctl set_permissions -p / $APPUSER ".*" ".*" ".*"  &>> $LOGFILE
+rabbitmqctl set_user_tags $APPUSER administrator  &>> $LOGFILE
+rabbitmqctl set_permissions -p / $APPUSER ".*" ".*" ".*"  &>> $LOGFILE
 stat $?
 
 echo -e "\e[32m __________ $COMPONENT Installation Completed _________ \e[0m"
