@@ -28,9 +28,8 @@ NODE_JS() {
     # Doenload and extract
     DOWNLOAD_AND_EXTRACT
 
-    echo -n "Installing the $COMPONENT dependencies:"
-    npm install &>> $LOGFILE
-    stat $?
+    # Install npm
+    NPM_INSTALL
 
     # Configure services
     CONFIGURE_SERVICE
@@ -69,7 +68,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIGURE_SERVICE() {
     echo -n "Configuring $COMPONENT file:"
-    sed -i -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' -e 's/CATALOGUE_ENDPOINT/catalogue.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' -e 's/MONGO_ENDPOINT/mongodb.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
+    sed -i -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' -e 's/CATALOGUE_ENDPOINT/catalogue.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' -e 's/MONGO_ENDPOINT/mongodb.ajrobot.co.uk/' -e 's/CARTENDPOINT/cart.ajrobot.co.uk/' -e 's/DBHOST/mysql.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
     stat $?
 
     mv -f /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
@@ -79,5 +78,43 @@ START_SERVICE() {
     echo -n "Starting $COMPONENT service:"
     systemctl daemon-reload &>> $LOGFILE
     systemctl start $COMPONENT &>> $LOGFILE
+    stat $?
+}
+
+MAVEN() {
+    echo -n "Installing Maven:"
+    yum install maven -y &>> $LOGFILE
+    stat $?
+
+    # create user
+    CREATE_USER
+
+    # Doenload and extract
+    DOWNLOAD_AND_EXTRACT
+
+    # Install Maven
+    MVN_INSTALL
+
+    # Configure services
+    CONFIGURE_SERVICE
+
+    #Start Service
+    START_SERVICE
+    
+    echo -e "\e[32m _______________$COMPONENT Installation completed_____________\e[0m"
+}
+
+NPM_INSTALL() {
+    echo -n "Installing $COMPONENT Dependencies: "
+    cd $COMPONENT 
+    npm install &>> $LOGFILE
+    stat $?
+}
+
+MVN_INSTALL() {
+    echo -n "Installing $COMPONENT Dependencies: "
+    cd $COMPONENT 
+    mvn clean package &>> $LOGFILE
+    mv target/$COMPONENT-1.0.jar $COMPONENT.jar
     stat $?
 }
