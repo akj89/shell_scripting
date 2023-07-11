@@ -1,6 +1,7 @@
 #!/bin/bash 
 
 COMPONENT=rabbitmq
+LOGFILE=/tmp/$COMPONENT.log
 source components/common.sh
 
 echo -n "Installing and configuring $COMPONENT repo"
