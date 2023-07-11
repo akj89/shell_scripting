@@ -100,20 +100,20 @@ MAVEN() {
 
     #Start Service
     START_SERVICE
-    
+
     echo -e "\e[32m _______________$COMPONENT Installation completed_____________\e[0m"
 }
 
 NPM_INSTALL() {
     echo -n "Installing $COMPONENT Dependencies: "
-    cd $COMPONENT 
+    cd /home/$APPUSER/$COMPONENT
     npm install &>> $LOGFILE
     stat $?
 }
 
 MVN_INSTALL() {
     echo -n "Installing $COMPONENT Dependencies: "
-    cd $COMPONENT 
+    cd /home/$APPUSER/$COMPONENT
     mvn clean package &>> $LOGFILE
     mv target/$COMPONENT-1.0.jar $COMPONENT.jar
     stat $?
