@@ -118,3 +118,15 @@ MVN_INSTALL() {
     mv target/$COMPONENT-1.0.jar $COMPONENT.jar
     stat $?
 }
+
+PYTHON() {
+    echo -n "Installing Python: "
+    yum install python36 gcc python3-devel -y &>> $LOGFILE
+    stat $?
+
+    # create user
+    CREATE_USER
+
+    # Doenload and extract
+    DOWNLOAD_AND_EXTRACT
+}
