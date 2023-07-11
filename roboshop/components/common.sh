@@ -68,7 +68,7 @@ DOWNLOAD_AND_EXTRACT() {
 
 CONFIGURE_SERVICE() {
     echo -n "Configuring $COMPONENT file:"
-    sed -i -e 's/AMQPHOST/rabbitmq.robot.internal/' -e 's/USERHOST/user.robot.internal/' -e 's/CARTHOST/cart.robot.internal/' -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' -e 's/CATALOGUE_ENDPOINT/catalogue.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' -e 's/MONGO_ENDPOINT/mongodb.ajrobot.co.uk/' -e 's/CARTENDPOINT/cart.ajrobot.co.uk/' -e 's/DBHOST/mysql.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
+    sed -i -e 's/AMQPHOST/rabbitmq.ajrobot.co.uk/' -e 's/USERHOST/user.ajrobot.co.uk/' -e 's/CARTHOST/cart.ajrobot.co.uk/' -e 's/MONGO_DNSNAME/mongodb.ajrobot.co.uk/' -e 's/CATALOGUE_ENDPOINT/catalogue.ajrobot.co.uk/' -e 's/REDIS_ENDPOINT/redis.ajrobot.co.uk/' -e 's/MONGO_ENDPOINT/mongodb.ajrobot.co.uk/' -e 's/CARTENDPOINT/cart.ajrobot.co.uk/' -e 's/DBHOST/mysql.ajrobot.co.uk/' /home/$APPUSER/$COMPONENT/systemd.service
     stat $?
 
     mv -f /home/$APPUSER/$COMPONENT/systemd.service /etc/systemd/system/$COMPONENT.service
